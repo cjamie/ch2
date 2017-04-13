@@ -17,7 +17,11 @@ package ch2;
  * (4)two basic types of control structures: decision making and repetition
  *    4.1* decision making- if then, if then else, ternary, and switch
  *    4.2* repetition; for, for each(enhanced for loop), while, do while
- * (5)be able to write and understand nested loops 
+ * (5)Flow Control
+ *    5.1* Nested Loops
+ *    5.2* Labels
+ *    5.3* break statement
+ *    5.4* continue statement
  * 
  */
 
@@ -51,6 +55,7 @@ public class Chapter2 {
         example6();
       //  System.out.println(example7("ex7String","ey7String"));
         example8();
+        example9();
     }
     
     
@@ -200,22 +205,92 @@ public class Chapter2 {
     }
     /*
     4.2 repetition
-    4.2.1 for
-    4.2.2 for each(enhanced for loop), 
-    4.2.3 while, 
-    4.2.4 do while
+    4.2.1 while 
+    4.2.2 do while
+    4.2.3 for loop with single and multiple terms
+    4.2.4 for each(enhanced for loop), 
     */
     public static void example8(){
-        //4.2.1
-        System.out.print("For Loop:");
+        String[] names=new String[3];
+        names[0]="lisa";
+        names[1]="kevin";
+        names[2]="anything";
+        
+        //4.2.1 while loop
+        System.out.println("\nWhile Loop:");
+        while(true){ //checks boolean expression; if it is true, continue executing 
+            //body
+            break;
+        }
+        
+        //4.2.2 do while loop is guarenteed at least 1 execution
+        System.out.println("\nDo while Loop:");
+        do{
+            System.out.print(loopCount1++);
+            //body
+        }while(loopCount1<10);
+        
+        //4.2.3 for loop, single term (fine-grain control)
+        System.out.println("\nFor Loop:");
         
         for(int i=0;i<10;i++){ //initialization, boolean expression, update statement
             System.out.print(i);
         }
         
+        //4.2.3 for loop with multiple terms
+        int x = 0;
+        System.out.println(" \nFor Loop with multiple terms:");
+        for (long y = 0, z = 4; x < 5 && y < 10; x++, y++)
+            System.out.print(y + " ");
+        System.out.print(x);
         
-        
-        
+        //4.2.4 for each (compile-time enhancement objects or array that implements java.lang.Iterable interface)
+        System.out.println("\nFor each:");
+        for (String values : names){ //keyword(datatype arbitrary_referenceID semicolon iterable_collection)
+            System.out.print(values + " ");
+        }        
     }
-    
+    /*
+    5* Flow Control
+    5.1* Nested Loops
+    5.2* Optional labels
+    5.3* break statement
+    5.4* continue statement
+    */
+    public static void example9(){
+        //5.1* Nested Loops (via enhanced for each loop)
+        int[][] myArray = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};//3x4 array
+        System.out.println("\nNested Loop:");
+        for(int[] x:myArray){
+            for(int y:x){
+                System.out.print(y+"\t");
+            }
+            System.out.println();
+        }
+        
+        //5.2* labels: optional pointer to the head of a statement
+        //5.3* break statement transfer the flow of control out of the enclosing statement
+        //CAUTION: may not label methods and not considered good practice
+        System.out.println("\nLabels+Break statement:");
+        OUTER_LOOP:for(int[] x1:myArray){
+            INNER_LOOP:for(int y1:x1){
+                System.out.print(y1+"\t");
+                break INNER_LOOP;
+            }
+            System.out.println();
+        }        
+        
+        //5.4* continue statement transfers the flow of control to the boolean expression 
+        
+        System.out.println("Continue statement:");
+        OUTER_LOOP:for(int[] x1:myArray){
+            INNER_LOOP:for(int y1:x1){
+                System.out.print(y1+"\t");
+                continue OUTER_LOOP;
+                System.out.print(y1+"\t");//unreachable because of continue
+                
+            }
+            System.out.println();
+        }
+    }
 }
