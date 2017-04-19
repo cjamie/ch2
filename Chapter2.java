@@ -74,7 +74,7 @@ public class Chapter2 {
     assignment operator is last, and is evaluated from right to left 
     
     */
-    public static void example1() {
+    static void example1() {
         int y=4;
         double x = 3 + 2 * --y;
         System.out.println(x);
@@ -90,14 +90,14 @@ public class Chapter2 {
     */
 
     //1* x is promoted to an int type before the + operation, and the resulting value is also long
-    public static void example2() {
+    static void example2() {
         int x=1;
         long y=33;
         System.out.println("example2 int*long becomes long");
     }
     //2* int y must be promoted to a double before using the multiplcation operator
     //3* short z must be promoted to an int before arithemetic operations
-    public static void example3() {
+    static void example3() {
         double x=1;
         int y=33;
         short z=22;
@@ -115,7 +115,7 @@ public class Chapter2 {
     
     CAUTION: possible lossy conversion if large to small
     */
-    public static void example4(){
+    static void example4(){
         int x = (int)1.0;
         short y = (short)1921222;
         double z = y;
@@ -131,7 +131,7 @@ public class Chapter2 {
     the 2nd portion even though it is syntactically incorrect
 
     */
-    public static void example5(){
+    static void example5(){
         int y;
         boolean x = true || (y<4);
         System.out.println("Example x:" + x);
@@ -144,7 +144,7 @@ public class Chapter2 {
     4.1.2 if then else 
     4.1.3 ternary (booleanExpression ? expression1 : expression2)
     */  
-    public static void example6(){
+    static void example6(){
         int hourOfDay=12;
         int dayOfWeek=20;
         //4.1.1
@@ -177,7 +177,7 @@ public class Chapter2 {
 
         Approach: if you can't find the relevant case, select default case until break statement
     */
-    public static int example7(String ex7, final String ey7){
+    static int example7(String ex7, final String ey7){
         String middle="Adams";
         final String suffix = "JR";
         int id=0;
@@ -210,7 +210,7 @@ public class Chapter2 {
     4.2.3 for loop with single and multiple terms
     4.2.4 for each(enhanced for loop), 
     */
-    public static void example8(){
+    static void example8(){
         String[] names=new String[3];
         names[0]="lisa";
         names[1]="kevin";
@@ -257,7 +257,7 @@ public class Chapter2 {
     5.3* break statement
     5.4* continue statement
     */
-    public static void example9(){
+    static void example9(){
         //5.1* Nested Loops (via enhanced for each loop)
         int[][] myArray = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};//3x4 array
         System.out.println("\nNested Loop:");
